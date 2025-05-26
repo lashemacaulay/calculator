@@ -1,23 +1,74 @@
-const add = function (array) {
-    return array.reduce((total, current) => total + current, 0);
-  };
-  
-const subtract = function (array) {
-    return array.reduce((total, current) => current - total, 0);
-};
-
-const multiply = function (array) {
-    return array.reduce((product, current) => product * current)
-};
-
-const divide = function (array) {
-    return array.reduce((product, current) => product / current)
-};
-
-
-function operate(num1, num2, operator) {
-    let arr = [num1, num2];
-     return operator(arr);
+function add(A,B) {
+    return A + B;
 }
 
-console.log(operate(1,2,add));
+function subtract(A,B) {
+    return A - B;
+}
+
+function multiply(A,B) {
+    return A * B;
+}
+
+function divide(A,B) {
+    return A / B;
+}
+
+let numA = 0;
+let numB = 0;
+let operator = null;
+
+function operate(numA,operator,numB) {
+    return operator(numA,numB);
+}
+
+/* Functions to populate display*/
+const display = document.getElementById("display");
+let buttons = document.getElementsByTagName("button");
+
+for (let i = 0; i < buttons.length; i++){
+    if (buttons[i].classList.contains("digits"))
+        buttons[i].addEventListener("click", function(event){
+            display.value += event.target.innerText;
+            let num = display.value;
+        });
+
+    if (buttons[i].innerText == "÷") {
+        buttons[i].addEventListener("click", function(event){
+            numA = display.value;
+            display.value = "";
+            operator = divide;
+        });
+    }
+
+    if (buttons[i].innerText == "×") {
+        buttons[i].addEventListener("click", function(event){
+            numA = display.value;
+            display.value = "";
+            operator = multiply;
+        });
+    }
+
+    if (buttons[i].innerText == "-") {
+        buttons[i].addEventListener("click", function(event){
+            numA = display.value;
+            display.value = "";
+            operator = subtract;
+        });
+    }
+
+    if (buttons[i].innerText == "+") {
+        buttons[i].addEventListener("click", function(event){
+            numA = display.value;
+            display.value = "";
+            operator = add;
+        });
+    }
+
+    if (buttons[i].innerText == "=") {
+        buttons[i].addEventListener("click", function(){
+            numB = display.value;
+            display.value = operate(numA,operator,numB);
+        });
+    }
+}

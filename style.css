@@ -80,3 +80,9 @@ button:active {
     border-radius: 50px 50px 50px 50px;
     width: 200px;
 }
+
+#display {
+    font-size: 100px;
+    text-align: right;
+    color: white;
+}
