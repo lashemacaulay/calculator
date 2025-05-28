@@ -41,6 +41,14 @@ for (let i = 0; i < buttons.length; i++) {
         });
     }
 
+    if (buttons[i].innerText == ".") {
+        buttons[i].addEventListener("click", function(event){
+            if (!display.value.includes(".")){
+                display.value += event.target.innerText;
+            }
+        })
+    }
+
     if (buttons[i].innerText == "÷") {
         buttons[i].addEventListener("click", function(event){
             numA = Number(display.value);
