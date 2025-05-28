@@ -1,1 +1,2 @@
-# calculator
+# Apple style calculator
+I made this Apple styled calculator to test and improve my coding skills using JavaScript, HTML and CSS all together. I made a few errors but had a bit of help from Chat GPT who explained all the errors well and how to fix them. I forgot to start commiting at the start of the project, and only remembered after I had finished with the design and was starting to make it functional. My apologies on that. Overall this was a fun project to build and I'm excited for more to come.
