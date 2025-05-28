@@ -68,7 +68,9 @@ for (let i = 0; i < buttons.length; i++){
     if (buttons[i].innerText == "=") {
         buttons[i].addEventListener("click", function(){
             numB = display.value;
-            display.value = operate(numA,operator,numB);
+            actualnumA = Number(numA);
+            actualnumB = Number(numB);
+            display.value = operate(actualnumA,operator,actualnumB);
         });
     }
 }
