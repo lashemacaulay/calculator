@@ -26,11 +26,20 @@ function operate(numA,operator,numB) {
 const display = document.getElementById("display");
 let buttons = document.getElementsByTagName("button");
 
-for (let i = 0; i < buttons.length; i++){
-    if (buttons[i].classList.contains("digits"))
+for (let i = 0; i < buttons.length; i++) {
+    if (buttons[i].classList.contains("digits")) {
         buttons[i].addEventListener("click", function(event){
             display.value += event.target.innerText;
         });
+    }
+
+    if (buttons[i].innerText == "0") {
+        buttons[i].addEventListener("click", function(event){
+            if (display.value != ""){
+                display.value += event.target.innerText;
+            }
+        });
+    }
 
     if (buttons[i].innerText == "÷") {
         buttons[i].addEventListener("click", function(event){
@@ -77,7 +86,7 @@ for (let i = 0; i < buttons.length; i++){
             numA = 0;
             numB = 0;
             operator = null;
-        })
+        });
     }
 
     if (buttons[i].innerText == "+/-") {
@@ -90,12 +99,13 @@ for (let i = 0; i < buttons.length; i++){
                     display.value = "-" + display.value;
                 }
             }
-        })
+        });
     }
 
     if (buttons[i].innerText == "%") {
         buttons[i].addEventListener("click", function() {
             display.value = Number(display.value)/100;
-        })
+        });
     }
 }
+  
