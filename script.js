@@ -34,7 +34,7 @@ for (let i = 0; i < buttons.length; i++){
 
     if (buttons[i].innerText == "÷") {
         buttons[i].addEventListener("click", function(event){
-            numA = display.value;
+            numA = Number(display.value);
             display.value = "";
             operator = divide;
         });
@@ -42,7 +42,7 @@ for (let i = 0; i < buttons.length; i++){
 
     if (buttons[i].innerText == "×") {
         buttons[i].addEventListener("click", function(event){
-            numA = display.value;
+            numA = Number(display.value);
             display.value = "";
             operator = multiply;
         });
@@ -50,7 +50,7 @@ for (let i = 0; i < buttons.length; i++){
 
     if (buttons[i].innerText == "-") {
         buttons[i].addEventListener("click", function(event){
-            numA = display.value;
+            numA = Number(display.value);
             display.value = "";
             operator = subtract;
         });
@@ -58,7 +58,7 @@ for (let i = 0; i < buttons.length; i++){
 
     if (buttons[i].innerText == "+") {
         buttons[i].addEventListener("click", function(event){
-            numA = display.value;
+            numA = Number(display.value);
             display.value = "";
             operator = add;
         });
@@ -66,10 +66,8 @@ for (let i = 0; i < buttons.length; i++){
 
     if (buttons[i].innerText == "=") {
         buttons[i].addEventListener("click", function(){
-            numB = display.value;
-            actualnumA = Number(numA);
-            actualnumB = Number(numB);
-            display.value = operate(actualnumA,operator,actualnumB);
+            numB = Number(display.value);
+            display.value = operate(numA,operator,numB);
         });
     }
 
@@ -92,6 +90,12 @@ for (let i = 0; i < buttons.length; i++){
                     display.value = "-" + display.value;
                 }
             }
+        })
+    }
+
+    if (buttons[i].innerText == "%") {
+        buttons[i].addEventListener("click", function() {
+            display.value = Number(display.value)/100;
         })
     }
 }
