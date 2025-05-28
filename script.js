@@ -30,7 +30,6 @@ for (let i = 0; i < buttons.length; i++){
     if (buttons[i].classList.contains("digits"))
         buttons[i].addEventListener("click", function(event){
             display.value += event.target.innerText;
-            let num = display.value;
         });
 
     if (buttons[i].innerText == "÷") {
@@ -72,5 +71,27 @@ for (let i = 0; i < buttons.length; i++){
             actualnumB = Number(numB);
             display.value = operate(actualnumA,operator,actualnumB);
         });
+    }
+
+    if (buttons[i].innerText == "AC") {
+        buttons[i].addEventListener("click", function() {
+            display.value = "";
+            numA = 0;
+            numB = 0;
+            operator = null;
+        })
+    }
+
+    if (buttons[i].innerText == "+/-") {
+        buttons[i].addEventListener("click", function() {
+            if (display.value != "0") {
+                if (display.value[0] == "-") {
+                    display.value = display.value.slice(1);
+                }
+                else {
+                    display.value = "-" + display.value;
+                }
+            }
+        })
     }
 }
